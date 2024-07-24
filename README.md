@@ -9,7 +9,7 @@ The UI components were powered by MUI components.
 The backend by AWS Amplify, using Cognito, Lambda, DynamoDB, IoT Core.
 
 ## How to read this source code ?
-1. Getting start with **core** folder from root. I created components for **Card** (a), **Animation** (b), **Layout** (c)
+1. Getting start with **core** folder from root. I created components for **Card** (a), **Animation** (b), **Layout** (c) 
   a) **Card**
     - Although this component looks like Box, or Card of MUI, the reason why I made it, is that integrating with **Animation** - a component generate effects
   b) **Animation**
