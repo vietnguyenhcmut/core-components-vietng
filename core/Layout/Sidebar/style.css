@@ -1,0 +1,124 @@
+.sidebar {
+  min-width: 60px;
+  max-width: 240px;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.sidebar.expand {
+  animation: sidebar-slide-from-left-to-right 0.2s linear;
+  width: 240px;
+}
+
+@keyframes sidebar-slide-from-left-to-right {
+  0% {
+    width: 60px;
+  }
+  100% {
+    width: 240px;
+  }
+}
+
+.sidebar.collapse {
+  animation: sidebar-slide-from-right-to-left 0.2s linear;
+  width: 60px;
+}
+
+@keyframes sidebar-slide-from-right-to-left {
+  0% {
+    width: 240px;
+  }
+  100% {
+    width: 60px;
+  }
+}
+
+.div_logo-and-branch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #c7c6ff;
+  width: 100%;
+}
+.text_branch.show {
+  margin-left: 10px;
+}
+.text_branch.hide {
+  display: none;
+}
+
+.div_menu-navigator {
+  width: calc(100% - 10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.div_menuNav {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 100%;
+}
+
+.div_menuNav-item {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 40px;
+  font-size: 14px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.div_menuNav-item:hover {
+  background-color: #f4f8fc;
+}
+
+.text_menuNav-title.show {
+  margin-left: 10px;
+  font-weight: bold;
+  animation: text-menuNav-title-fadeIn 0.5s linear;
+}
+
+@keyframes text-menuNav-title-fadeIn {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  100% {
+    opacity: 1;
+    display: block;
+  }
+}
+.text_menuNav-title.hide {
+  animation: text-menuNav-title-fadeOut 0.5s linear;
+  display: none;
+}
+
+@keyframes text-menuNav-title-fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.div_sidebarConfig {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.button-switch-collapse {
+  width: 100%;
+}
