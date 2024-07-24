@@ -10,9 +10,9 @@ The backend by AWS Amplify, using Cognito, Lambda, DynamoDB, IoT Core. <br />
 
 ## How to read this source code ?
   1. Getting start with **core** folder from root. I created components for **Card** (a), **Animation** (b), **Layout** (c) <br />
-    a) **Card** <br />
+    a) **Card**  
       - Although this component looks like Box, or Card of MUI, the reason why I made it, is that integrating with **Animation** - a component generate effects <br />
-    b) **Animation** <br />
+    b) **Animation**  
       - This component generate effects for any element or node. It's also integrated inside my **Card**. <br />
       - This component is inherited from MUI's animation components <br />
     c) **Layout**  
