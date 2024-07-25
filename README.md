@@ -26,7 +26,7 @@ If user make an action like turn off a device, change dimming of a light, this a
       - This component generate effects for any element or node. It's also integrated inside my **Card**. <br />
       - This component is inherited from MUI's animation components <br />
     c) **Layout**  
-      - This component generate a skeleton for entire website layout. It contain 4 child: Sidebar, Header, Main, and Footer.  
+      - This component generate a skeleton for entire website layout. It contains 4 child: Sidebar, Header, Main, and Footer.  
       - Each of child has props, receives children element or node to render. Styles are also adjusted.  
 
 3. Next, you can read my setup example in **initial** folder. I defined all routes, and attached logo, branch name.  
