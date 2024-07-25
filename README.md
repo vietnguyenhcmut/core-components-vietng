@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Link demo: https://master.d1vqm3mpz4j0n6.amplifyapp.com/
+## About this project
+This is a project using Next.js, Material UI library. It's a website which can control devices at home.
 
-## Getting Started
+## What did I do in this project ?
+I created a core-components package, then a website based on this core-components package.  
+The UI components were powered by MUI components.  
+The backend by AWS Amplify, with Cognito, Lambda, DynamoDB, IoT Core.  
 
-First, run the development server:
+## Flow
+Whenever user access this website, it will check if this user has access or not (with Cognito Identity Pool). If user has access, they will pass through.  
+Once user logs in successfully, they will see on the left, a **Sidebar** appears with 4 routes as menu navigator: **Home**, **Clock**, **User**, and **Contact**.  
+  - **Home**: information about all devices that user owns  
+  - **Clock**: user can set alarm for devices, the time a device will do its job   
+  - **User**: user can see their information, update it  
+  - **Contact**: email, phone number, address to contact  
+When user choose any menu item above, data will be loaded from DynamoDB by AWS SDK V3.  
+If user make an action like turn off a device, change dimming of a light, this action will be sent to IoT Core by MQTT protocol, then it triggers a message routing and fly to Lambda Function, this Lambda will update DynamoDB table corresponding to this device.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How to read this source code ?
+  1. Getting start with **core** folder from root. I created components for **Card** (a), **Animation** (b), **Layout** (c) <br />
+    a) **Card**  
+      - Although this component looks like Box, or Card of MUI, the reason why I made it, is that integrating with **Animation** - a component generate effects <br />
+    b) **Animation**  
+      - This component generate effects for any element or node. It's also integrated inside my **Card**. <br />
+      - This component is inherited from MUI's animation components <br />
+    c) **Layout**  
+      - This component generate a skeleton for entire website layout. It contains 4 child: Sidebar, Header, Main, and Footer.  
+      - Each of child has props, receives children element or node to render. Styles are also adjusted.  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+3. Next, you can read my setup example in **initial** folder. I defined all routes, and attached logo, branch name.  
+  
+4. Finally, you can see in **views** folder, there are many components created from my core-components package. Every component uses Card as its root element and children passed inside.  
