@@ -3,7 +3,7 @@ import FilterDramaIcon from "@mui/icons-material/FilterDrama";
 
 const InitialWebPagesConfiguration = {
   branch: {
-    name: "ProjectName",
+    name: "OnHand",
     logo: <FilterDramaIcon sx={{ fontSize: "40px", color: "#524fff" }} />,
   },
   routes: defineRoutes,

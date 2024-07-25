@@ -13,9 +13,24 @@ import {
 } from "@mui/x-data-grid";
 import { Chip } from "@mui/material";
 
+import { DataStoreContext } from "@/initial/data-store-provider/DataStoreProvider";
+import { useContext } from "react";
+
+type RowProps = {
+  id: number;
+  name: string;
+  place: string;
+  timeLived: string;
+  lastCheck: string;
+  status: boolean;
+  editable: boolean;
+};
+
 const TableAllDevices = () => {
+  const { dataStore } = useContext(DataStoreContext);
+
   const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 100 },
+    { field: "id", headerName: "STT", width: 100 },
     { field: "name", headerName: "Tên thiết bị", width: 200 },
     { field: "place", headerName: "Vị trí", width: 150 },
     { field: "timeLived", headerName: "Thời gian hoạt động", width: 150 },
@@ -39,71 +54,19 @@ const TableAllDevices = () => {
     },
   ];
 
-  const rows: GridRowsProp = [
-    {
-      id: 1,
-      name: "Bóng đèn LiPre 1",
-      place: "Phòng khách",
-      timeLived: "4 ngày 11 tiếng",
-      lastCheck: "Vừa xong",
-      status: true,
-      editable: false,
-    },
-    {
-      id: 2,
-      name: "Bóng đèn LiPre 2",
-      place: "Phòng khách",
-      timeLived: "11 ngày 2 tiếng",
-      lastCheck: "Vừa xong",
-      status: true,
-      editable: false,
-    },
-    {
-      id: 3,
-      name: "Quạt trần FanPro",
-      place: "Phòng khách",
-      timeLived: "6 tiếng 15 phút",
-      lastCheck: "Vừa xong",
-      status: true,
-      editable: false,
-    },
-    {
-      id: 4,
-      name: "Quạt trần FanPro 2",
-      place: "Phòng khách",
-      timeLived: "6 tiếng 15 phút",
-      lastCheck: "Vừa xong",
-      status: true,
-      editable: false,
-    },
-    {
-      id: 5,
-      name: "Quạt trần FanPro 3",
-      place: "Phòng khách",
-      timeLived: "6 tiếng 15 phút",
-      lastCheck: "Vừa xong",
-      status: true,
-      editable: false,
-    },
-    {
-      id: 6,
-      name: "Nồi cơm FreeCook",
-      place: "Bếp",
-      timeLived: "3 ngày 10 tiếng",
-      lastCheck: "2 ngày trước",
-      status: false,
-      editable: false,
-    },
-    {
-      id: 7,
-      name: "Cửa gara",
-      place: "Gara",
-      timeLived: "11 ngày 2 tiếng",
-      lastCheck: "Vừa xong",
-      status: true,
-      editable: false,
-    },
-  ];
+  const rows: RowProps[] = dataStore.dataOfDevices.map(
+    (dataOfDevice, index) => {
+      return {
+        id: index + 1,
+        name: dataOfDevice.nameOfDevice.S,
+        place: dataOfDevice.placeOfDevice.S,
+        timeLived: dataOfDevice.timeLived.S,
+        lastCheck: dataOfDevice.lastCheck.S,
+        status: dataOfDevice.status.BOOL,
+        editable: false,
+      };
+    }
+  );
 
   return (
     <Card
@@ -204,12 +167,6 @@ const TableAllDevices = () => {
           },
         }}
         pageSizeOptions={[5, 10, 20, 30, 40, 50]}
-        //onRowClick={(event) => handleRowOfTableClick(event.id)}
-        // hideFooterPagination
-        // checkboxSelection
-        // disableRowSelectionOnClick
-        //sx={sxStyled}
-        //localeText={viVN}
       ></DataGrid>
     </Card>
   );

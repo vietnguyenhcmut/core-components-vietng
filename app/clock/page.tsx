@@ -6,7 +6,13 @@ import CardAddNewClock from "@/views/card-clock/CardAddNewClock";
 import { Grid } from "@mui/material";
 import { CardClockProps } from "@/views/card-clock/CardClock";
 
+import { DataStoreContext } from "@/initial/data-store-provider/DataStoreProvider";
+import { useContext } from "react";
+
 const Clock = () => {
+  const { dataStore } = useContext(DataStoreContext);
+  console.log(dataStore);
+
   const data: CardClockProps[] = [
     {
       image: {

@@ -17,5 +17,4 @@ export type SidebarProps = {
   logo: React.ReactElement;
   branch: string;
   menuNav: MenuNavProps[];
-  setHeaderTitle: (title: string) => void;
 };

@@ -1,6 +1,9 @@
+"use client";
+
+import { useState } from "react";
+
 import { Grid } from "@mui/material";
 import Card from "@/core/Card/Card";
-
 import OverviewDevices from "@/views/overview/overview-devices/OverviewDevices";
 import OverviewElectricity from "@/views/overview/overview-electricity/OverviewElectricity";
 import TableAllDevices from "@/views/table-all-devices/TableAllDevices";

@@ -14,21 +14,11 @@ type NavigatorProps = {
     unactiveItem: React.CSSProperties;
   };
   data: MenuNavProps[];
-  setHeaderTitle: (title: string) => void;
   collapse: boolean;
 };
 
-const MenuNav: React.FC<NavigatorProps> = ({
-  style,
-  data,
-  setHeaderTitle,
-  collapse,
-}) => {
+const MenuNav: React.FC<NavigatorProps> = ({ style, data, collapse }) => {
   const pathname = usePathname();
-
-  const handleBtnClickChooseItem = (title: string) => {
-    setHeaderTitle(title);
-  };
 
   return (
     <div className="div_menuNav">
@@ -56,7 +46,6 @@ const MenuNav: React.FC<NavigatorProps> = ({
                   ? "20px"
                   : "10px",
               }}
-              onClick={() => handleBtnClickChooseItem(item.title)}
             >
               {item.icon}
               <h4
@@ -72,13 +61,7 @@ const MenuNav: React.FC<NavigatorProps> = ({
   );
 };
 
-const Sidebar: React.FC<SidebarProps> = ({
-  style,
-  logo,
-  branch,
-  menuNav,
-  setHeaderTitle,
-}) => {
+const Sidebar: React.FC<SidebarProps> = ({ style, logo, branch, menuNav }) => {
   const [collapse, setCollapse] = useState(false);
   return (
     <div
@@ -99,7 +82,6 @@ const Sidebar: React.FC<SidebarProps> = ({
         <MenuNav
           style={style?.sidebarMenu}
           data={menuNav}
-          setHeaderTitle={setHeaderTitle}
           collapse={collapse}
         />
       </div>
