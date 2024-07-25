@@ -4,9 +4,19 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 This is a project using Next.js, Material UI library. It's a website which can control devices at home.
 
 ## What did I do in this project ?
-I created a core-components package, then a website based on this core-components package. <br />
-The UI components were powered by MUI components. <br />
-The backend by AWS Amplify, using Cognito, Lambda, DynamoDB, IoT Core. <br />
+I created a core-components package, then a website based on this core-components package.  
+The UI components were powered by MUI components.  
+The backend by AWS Amplify, with Cognito, Lambda, DynamoDB, IoT Core.  
+
+## Flow
+Whenever user access this website, it will check if this user has access or not (with Cognito Identity Pool). If user has access, they will pass through.  
+Once user logs in successfully, they will see on the left, a **Sidebar** appears with 4 routes as menu navigator: **Home**, **Clock**, **User**, and **Contact**.  
+  - **Home**: information about all devices that user owns  
+  - **Clock**: user can set alarm for devices, the time a device will do its job   
+  - **User**: user can see their information, update it  
+  - **Contact**: email, phone number, address to contact  
+When user choose any menu item above, data will be loaded from DynamoDB by AWS SDK V3.  
+If user make an action like turn off a device, change dimming of a light, this action will be sent to IoT Core by MQTT protocol, then it triggers a message routing and fly to Lambda Function, this Lambda will update DynamoDB table corresponding to this device.
 
 ## How to read this source code ?
   1. Getting start with **core** folder from root. I created components for **Card** (a), **Animation** (b), **Layout** (c) <br />
