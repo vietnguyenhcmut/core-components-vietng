@@ -1,4 +1,4 @@
-Link demo: https://master.d1vqm3mpz4j0n6.amplifyapp.com/
+Link demo: https://master.d3n3605u39aiut.amplifyapp.com/
 ## About this project
 This is a project using Next.js, Material UI library. It's a website which can control devices at home.
 
@@ -28,6 +28,6 @@ If user make an action like turn off a device, change dimming of a light, this a
       - This component generate a skeleton for entire website layout. It contains 4 child: Sidebar, Header, Main, and Footer.  
       - Each of child has props, receives children element or node to render. Styles are also adjusted.  
 
-3. Next, you can read my setup example in **initial** folder. I defined all routes, and attached logo, branch name.  
+2. Next, you can read my setup example in **initial** folder. I defined all routes, and attached logo, branch name, and a data store with **useContext** hook.  
   
-4. Finally, you can see in **views** folder, there are many components created from my core-components package. Every component uses Card as its root element and children passed inside.  
+3. Finally, you can see in **views** folder, there are many components created from my core-components package. Every component uses Card as its root element and children passed inside.  
