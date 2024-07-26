@@ -1,12 +1,15 @@
 import "./style.css";
 import Footer from "./Footer/Footer";
-import Header from "./Header/Header";
+// import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Sidebar from "./Sidebar/Sidebar";
 import { SidebarProps } from "./Sidebar/Types";
 import { HeaderProps } from "./Header/Types";
 import { MainProps } from "./Main/Types";
 import { FooterProps } from "./Footer/Types";
+
+import dynamic from "next/dynamic";
+const Header = dynamic(() => import("./Header/Header"), { ssr: false });
 
 type LayoutProps = {
   sidebarProps: SidebarProps;

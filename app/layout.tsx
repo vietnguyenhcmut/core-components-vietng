@@ -8,7 +8,7 @@ import FilterDramaIcon from "@mui/icons-material/FilterDrama";
 import TuneIcon from "@mui/icons-material/Tune";
 import InitialWebPagesConfiguration from "@/initial";
 import { useAuthenticator, Authenticator } from "@aws-amplify/ui-react";
-import LoginPage from "@/views/auth/LoginPage";
+// import LoginPage from "@/views/auth/LoginPage";
 // import ThemeProvider from "./themes/ThemeProvider";
 import { useEffect, useState } from "react";
 
@@ -33,6 +33,11 @@ import DataStoreProvider, {
 } from "@/initial/data-store-provider/DataStoreProvider";
 
 import { useContext } from "react";
+
+import dynamic from "next/dynamic";
+const LoginPage = dynamic(() => import("@/views/auth/LoginPage"), {
+  ssr: false,
+});
 
 // import { CONSTANT_TABLE_DATA_USER } from "./constant/Constant";
 
