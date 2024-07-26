@@ -1,8 +1,35 @@
+"use client";
+
 import Image from "next/image";
 import Card from "@/core/Card/Card";
 import CircleIcon from "@mui/icons-material/Circle";
 
+import { DataStoreContext } from "@/initial/data-store-provider/DataStoreProvider";
+import { useContext, useEffect, useState } from "react";
+
 const OverviewDevices = () => {
+  const { dataStore } = useContext(DataStoreContext);
+
+  const [numOfDevicesConnected, setNumOfDevicesConnected] = useState(0);
+  const [totalDevices, setTotalDevices] = useState(0);
+
+  useEffect(() => {
+    if (
+      dataStore &&
+      dataStore.dataOfDevices &&
+      dataStore.dataOfDevices.length > 0
+    ) {
+      var numDevicesConnected = 0;
+      for (var i = 0; i < dataStore.dataOfDevices.length; i++) {
+        if (dataStore.dataOfDevices[i].status.BOOL) {
+          numDevicesConnected++;
+        }
+      }
+      setNumOfDevicesConnected(numDevicesConnected);
+      setTotalDevices(dataStore.dataOfDevices.length);
+    }
+  }, [dataStore]);
+
   return (
     <Card
       withAnimation="grow"
@@ -68,7 +95,7 @@ const OverviewDevices = () => {
             }}
           >
             {" "}
-            14
+            {totalDevices}
           </h4>
         </div>
 
@@ -118,7 +145,7 @@ const OverviewDevices = () => {
               fontWeight: "bold",
             }}
           >
-            12
+            {numOfDevicesConnected}
           </h5>
         </Card>
       </Card>
