@@ -12,7 +12,13 @@ import {
   Divider,
 } from "@mui/material";
 
+import LightControl from "./light-control/LightControl";
+
+import { DataStoreContext } from "@/initial/data-store-provider/DataStoreProvider";
+import { useContext } from "react";
+
 const CardSpecifiedDevice = () => {
+  const { dataStore } = useContext(DataStoreContext);
   const [connectionStatus, setConnectionStatus] = useState<boolean>(false);
   useEffect(() => {
     setConnectionStatus(true);
@@ -75,50 +81,40 @@ const CardSpecifiedDevice = () => {
                 component="div"
                 sx={{ color: "#524fff", width: "70%", margin: 0 }}
               >
-                Bóng đèn LiPre
+                {/* {dataStore?.dataOfDevices[0]?.nameOfDevice?.S} */}
+                Bóng đèn LiPre 1
               </Typography>
               <Chip
                 variant="filled"
-                label={connectionStatus ? "Đang kết nối" : "Mất kết nối"}
+                label={
+                  dataStore?.dataOfDevices[0]?.status.BOOL
+                    ? "Đang kết nối"
+                    : "Mất kết nối"
+                }
                 sx={{
-                  backgroundColor: connectionStatus ? "#C3FFAC" : "#FDB1A3",
-                  color: connectionStatus ? "#00BD12" : "#FA3914",
+                  backgroundColor: dataStore?.dataOfDevices[0]?.status.BOOL
+                    ? "#C3FFAC"
+                    : "#FDB1A3",
+                  color: dataStore?.dataOfDevices[0]?.status.BOOL
+                    ? "#00BD12"
+                    : "#FA3914",
                 }}
               />
             </div>
             <Typography variant="body2" color="text.secondary">
-              Công suất chiếu sáng: 20W,
+              {/* {dataStore?.dataOfDevices[0]?.placeOfDevice.S} */}
+              Phòng khách
             </Typography>
 
             <Divider sx={{ marginTop: "10px", marginBottom: "10px" }} />
 
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <div style={{ width: "70%" }}>
-                <Typography variant="body2" color="text.secondary">
-                  Đèn đang tắt
-                </Typography>
-              </div>
-              <CardActions>
-                <Button
-                  size="small"
-                  variant="contained"
-                  color="success"
-                  sx={{
-                    fontWeight: "bold",
-                  }}
-                >
-                  Bật
-                </Button>
-              </CardActions>
-            </div>
+            <LightControl
+              isLightOn={true}
+              currentDimmingLevel={1}
+              setLightOn={() => {}}
+              setLightDimmingLevel={() => {}}
+            />
+            {/* beside light type, you can pass other type of device, like: fan, cooker, door,... and check which type will be rendered */}
           </CardContent>
         </CardMUI>
       </Card>
