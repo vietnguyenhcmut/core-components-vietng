@@ -1,4 +1,4 @@
-Link demo: https://master.d3n3605u39aiut.amplifyapp.com/
+Link demo: https://master.d3n3605u39aiut.amplifyapp.com/  
 Username: viet.nguyen.hcmut@gmail.com  
 Password: ********  
 ## About this project
