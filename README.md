@@ -1,6 +1,6 @@
 Link demo: https://master.d3n3605u39aiut.amplifyapp.com/
-Username: viet.nguyen.hcmut@gmail.com
-Password: ********
+Username: viet.nguyen.hcmut@gmail.com  
+Password: ********  
 ## About this project
 This is a project using Next.js, Material UI library. It's a website which can control devices at home.
 
